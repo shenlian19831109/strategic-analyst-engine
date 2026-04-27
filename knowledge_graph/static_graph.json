@@ -1,0 +1,71 @@
+{
+  "nodes": [
+    {"id": "L1_GOAL", "type": "L1", "name": "Strategic Proposition", "properties": {"desc": "Core strategic question"}},
+    
+    {"id": "M1", "type": "L2", "name": "Industry Sizing", "properties": {"module_id": "M1"}},
+    {"id": "M2", "type": "L2", "name": "PESTEL", "properties": {"module_id": "M2"}},
+    {"id": "M3", "type": "L2", "name": "Value Chain", "properties": {"module_id": "M3"}},
+    {"id": "M4", "type": "L2", "name": "Customer Insight", "properties": {"module_id": "M4"}},
+    {"id": "M5", "type": "L2", "name": "Competitor Profiling", "properties": {"module_id": "M5"}},
+    {"id": "M6", "type": "L2", "name": "Trend Analysis", "properties": {"module_id": "M6"}},
+    {"id": "M7", "type": "L2", "name": "Strategic Layout (ERRC)", "properties": {"module_id": "M7"}},
+    {"id": "M8", "type": "L2", "name": "Business Model Canvas", "properties": {"module_id": "M8"}},
+
+    {"id": "T1_1", "type": "L3", "name": "TAM/SAM/SOM Sizing", "properties": {"parent": "M1"}},
+    {"id": "T1_2", "type": "L3", "name": "CAGR Projection", "properties": {"parent": "M1"}},
+    {"id": "T2_1", "type": "L3", "name": "Policy Quantification", "properties": {"parent": "M2"}},
+    {"id": "T2_2", "type": "L3", "name": "Tech Maturity Assessment", "properties": {"parent": "M2"}},
+    {"id": "T3_1", "type": "L3", "name": "Profit Pool Mapping", "properties": {"parent": "M3"}},
+    {"id": "T3_2", "type": "L3", "name": "Chain Master Identification", "properties": {"parent": "M3"}},
+    {"id": "T4_1", "type": "L3", "name": "JTBD Identification", "properties": {"parent": "M4"}},
+    {"id": "T4_2", "type": "L3", "name": "Pain/Gain/Wow Mapping", "properties": {"parent": "M4"}},
+    {"id": "T5_1", "type": "L3", "name": "Competitor Persona Coding", "properties": {"parent": "M5"}},
+    {"id": "T5_2", "type": "L3", "name": "Response Trigger Analysis", "properties": {"parent": "M5"}},
+    {"id": "T6_1", "type": "L3", "name": "Tech Evolution Roadmap", "properties": {"parent": "M6"}},
+    {"id": "T7_1", "type": "L3", "name": "Value Curve Comparison", "properties": {"parent": "M7"}},
+    {"id": "T8_1", "type": "L3", "name": "9-Block Filling", "properties": {"parent": "M8"}},
+
+    {"id": "D1_1", "type": "L4", "name": "Historical Sales/Volume", "properties": {"task": "T1_1"}},
+    {"id": "D1_2", "type": "L4", "name": "Average Unit Price", "properties": {"task": "T1_1"}},
+    {"id": "D2_1", "type": "L4", "name": "Policy Document Number/Subsidy", "properties": {"task": "T2_1"}},
+    {"id": "D3_1", "type": "L4", "name": "Segment Gross Margin", "properties": {"task": "T3_1"}},
+    {"id": "D4_1", "type": "L4", "name": "App Store/Forum Text Data", "properties": {"task": "T4_1"}},
+    {"id": "D5_1", "type": "L4", "name": "Competitor Price/Product Timeline", "properties": {"task": "T5_1"}}
+  ],
+  "relationships": [
+    {"from": "L1_GOAL", "to": "M1", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M2", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M3", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M4", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M5", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M6", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M7", "type": "decomposes_into"},
+    {"from": "L1_GOAL", "to": "M8", "type": "decomposes_into"},
+
+    {"from": "M1", "to": "T1_1", "type": "requires_task"},
+    {"from": "M1", "to": "T1_2", "type": "requires_task"},
+    {"from": "M2", "to": "T2_1", "type": "requires_task"},
+    {"from": "M2", "to": "T2_2", "type": "requires_task"},
+    {"from": "M3", "to": "T3_1", "type": "requires_task"},
+    {"from": "M3", "to": "T3_2", "type": "requires_task"},
+    {"from": "M4", "to": "T4_1", "type": "requires_task"},
+    {"from": "M4", "to": "T4_2", "type": "requires_task"},
+    {"from": "M5", "to": "T5_1", "type": "requires_task"},
+    {"from": "M5", "to": "T5_2", "type": "requires_task"},
+    {"from": "M6", "to": "T6_1", "type": "requires_task"},
+    {"from": "M7", "to": "T7_1", "type": "requires_task"},
+    {"from": "M8", "to": "T8_1", "type": "requires_task"},
+
+    {"from": "T1_1", "to": "D1_1", "type": "needs_data"},
+    {"from": "T1_1", "to": "D1_2", "type": "needs_data"},
+    {"from": "T2_1", "to": "D2_1", "type": "needs_data"},
+    {"from": "T3_1", "to": "D3_1", "type": "needs_data"},
+    {"from": "T4_1", "to": "D4_1", "type": "needs_data"},
+    {"from": "T5_1", "to": "D5_1", "type": "needs_data"},
+
+    {"from": "T4_2", "to": "M7", "type": "informs", "desc": "Pain points drive ERRC creation"},
+    {"from": "T5_1", "to": "M8", "type": "informs", "desc": "Competitor persona affects risk assessment"},
+    {"from": "T2_1", "to": "M3", "type": "informs", "desc": "Policy shifts affect profit pools"},
+    {"from": "T3_1", "to": "T1_1", "type": "depends_on", "desc": "Profit analysis depends on market sizing"}
+  ]
+}

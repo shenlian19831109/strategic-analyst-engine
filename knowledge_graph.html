@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>战略分析引擎 V3.0 知识图谱 - 交互式视图</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 { color: #2c3e50; margin-bottom: 5px; }
+        .subtitle { color: #7f8c8d; font-size: 1.1em; }
+        .mermaid-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 98%;
+            max-width: 1500px;
+            overflow: auto;
+        }
+        .legend {
+            margin-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 13px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+        .dot { height: 12px; width: 12px; border-radius: 50%; display: inline-block; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>战略分析引擎 V3.0 知识图谱</h1>
+        <div class="subtitle">基于 DeepSeek 深度优化建议构建的“白箱化”推理引擎</div>
+    </div>
+
+    <div class="mermaid-container">
+        <pre class="mermaid">
+graph TD
+    %% L1: 战略命题
+    L1[L1: 战略命题/行业进入策略]:::l1
+
+    %% L2: 分析模块
+    subgraph Modules [L2: 核心分析模块]
+        M1[M1: 行业定义与规模测算]:::l2
+        M2[M2: 宏观环境 PESTEL]:::l2
+        M3[M3: 行业价值链]:::l2
+        M4[M4: 客户需求深度解剖]:::l2
+        M5[M5: 竞争分析与反应模式]:::l2
+        M6[M6: 趋势分析]:::l2
+        M7[M7: 战略布局图 ERRC]:::l2
+        M8[M8: 商业画布 BMC]:::l2
+    end
+
+    %% L3: 关键任务
+    T1[L3: TAM/SAM/SOM测算]:::l3
+    T2[L3: 政策量化映射]:::l3
+    T3[L3: 利润池拆解]:::l3
+    T4[L3: JTBD与痛点挖掘]:::l3
+    T5[L3: 竞争人格编码]:::l3
+    T6[L3: 技术成熟度评估]:::l3
+    T7[L3: 价值曲线生成]:::l3
+    T8[L3: 财务可行性校验]:::l3
+
+    %% L4: 数据需求
+    D1[L4: 销量/渗透率数据]:::l4
+    D2[L4: 政策文号/补贴标准]:::l4
+    D4[L4: App评论/投诉文本]:::l4
+    D5[L4: 历史价格/新品序列]:::l4
+
+    %% L5: 证据源
+    E1[L5: 行业协会报告 🟢]:::l5_high
+    E2[L5: 政府公报 🟢]:::l5_high
+    E4[L5: 社交媒体/论坛 🟡]:::l5_mid
+    E5[L5: 竞品新闻/招聘 🟡]:::l5_mid
+
+    %% 垂直关系
+    L1 --> M1 & M2 & M3 & M4 & M5 & M6 & M7 & M8
+    M1 --> T1 --> D1 --> E1
+    M2 --> T2 --> D2 --> E2
+    M4 --> T4 --> D4 --> E4
+    M5 --> T5 --> D5 --> E5
+    M3 --> T3
+    M6 --> T6
+    M7 --> T7
+    M8 --> T8
+
+    %% 横向推理规则 (虚线)
+    T4 -. "识别痛点 -> 创造要素" .-> M7
+    T5 -. "价格杀手 -> 风险预警" .-> M8
+    T2 -. "政策变动 -> 利润重测" .-> M3
+    T6 -. "技术演进 -> 蓝海识别" .-> M7
+    T1 -. "规模基准" .-> T3
+    M7 -. "战略闭环" .-> M8
+
+    %% 样式定义
+    classDef l1 fill:#f39c12,stroke:#d35400,stroke-width:3px,color:#fff;
+    classDef l2 fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff;
+    classDef l3 fill:#ecf0f1,stroke:#bdc3c7,stroke-width:1px;
+    classDef l4 fill:#fff3e0,stroke:#e67e22,stroke-dasharray: 5 5;
+    classDef l5_high fill:#d4edda,stroke:#28a745,color:#155724;
+    classDef l5_mid fill:#fff3cd,stroke:#ffc107,color:#856404;
+
+    style Modules fill:#f9f9f9,stroke:#ccc,stroke-dasharray: 10 5
+        </pre>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item"><span class="dot" style="background-color: #f39c12;"></span> L1 战略命题</div>
+        <div class="legend-item"><span class="dot" style="background-color: #3498db;"></span> L2 分析模块</div>
+        <div class="legend-item"><span class="dot" style="background-color: #ecf0f1; border: 1px solid #bdc3c7;"></span> L3 分析任务</div>
+        <div class="legend-item"><span class="dot" style="background-color: #fff3e0; border: 1px dashed #e67e22;"></span> L4 数据需求</div>
+        <div class="legend-item"><span class="dot" style="background-color: #d4edda;"></span> 高置信度证据 (🟢)</div>
+        <div class="legend-item"><span class="dot" style="background-color: #fff3cd;"></span> 中置信度证据 (🟡)</div>
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose' });
+    </script>
+</body>
+</html>

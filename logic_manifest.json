@@ -1,0 +1,87 @@
+{
+  "skill_name": "strategic-analyst-engine",
+  "version": "3.0",
+  "schema": {
+    "layers": [
+      {"id": "L1", "name": "Strategic Proposition", "description": "Core strategic question to be answered"},
+      {"id": "L2", "name": "Analysis Module", "description": "8 core modules of the framework"},
+      {"id": "L3", "name": "Analysis Task", "description": "Specific sub-tasks within each module"},
+      {"id": "L4", "name": "Data Requirement", "description": "Quantitative or qualitative data items needed"},
+      {"id": "L5", "name": "Evidence Source", "description": "Original source of data with credibility rating"}
+    ],
+    "relationships": [
+      {"type": "decomposes_into", "from": "L1", "to": "L2"},
+      {"type": "requires_task", "from": "L2", "to": "L3"},
+      {"type": "needs_data", "from": "L3", "to": "L4"},
+      {"type": "sourced_from", "from": "L4", "to": "L5"},
+      {"type": "depends_on", "from": "L3", "to": "L3"},
+      {"type": "informs", "from": "L3", "to": "L2"},
+      {"type": "affects", "from": "L2", "to": "L2"},
+      {"type": "constrains", "from": "L2", "to": "L2"}
+    ]
+  },
+  "modules": [
+    {
+      "id": "M1",
+      "name": "Industry Definition & Sizing",
+      "tasks": ["Boundary Definition", "TAM/SAM/SOM Sizing", "CAGR Projection"]
+    },
+    {
+      "id": "M2",
+      "name": "PESTEL Macro Environment",
+      "tasks": ["Policy Quantification", "Economic Sensitivity", "Social Trend Mapping", "Tech Maturity Assessment", "Environmental Compliance", "Legal Risk Audit"]
+    },
+    {
+      "id": "M3",
+      "name": "Industry Value Chain",
+      "tasks": ["Segment Decomposition", "Profit Pool Mapping", "Chain Master Identification", "KSF Extraction"]
+    },
+    {
+      "id": "M4",
+      "name": "Customer Insight Deep-Dive",
+      "tasks": ["JTBD Identification", "Pain/Gain/Wow Mapping", "Requirement Prioritization", "Silent Need Mining"]
+    },
+    {
+      "id": "M5",
+      "name": "Competitor Profiling & Response",
+      "tasks": ["Market Concentration (CRn)", "Strategic Grouping", "Competitor Persona Coding", "Response Trigger Analysis"]
+    },
+    {
+      "id": "M6",
+      "name": "Trend Analysis",
+      "tasks": ["Tech Evolution Roadmap", "Business Model Innovation", "Uncertainty Matrix"]
+    },
+    {
+      "id": "M7",
+      "name": "Strategic Layout (ERRC)",
+      "tasks": ["Value Curve Comparison", "ERRC Strategy Generation"]
+    },
+    {
+      "id": "M8",
+      "name": "Business Model Canvas",
+      "tasks": ["9-Block Filling", "Consistency Check", "Financial Feasibility"]
+    }
+  ],
+  "reasoning_rules": [
+    {
+      "trigger": "M4_High_Priority_Pain_Point",
+      "condition": "Pain score > 0.8 and Frequency > 0.3",
+      "action": "Update M7 ERRC 'Create' factors automatically"
+    },
+    {
+      "trigger": "M5_Price_Killer_Persona",
+      "condition": "Competitor persona identified as 'Price Killer'",
+      "action": "Add 'Price War Warning' to M8 Risk Assessment; Increase Porter's Five Forces Rivalry score"
+    },
+    {
+      "trigger": "M2_Policy_Major_Shift",
+      "condition": "New subsidy or standard regulation detected",
+      "action": "Recalculate M3 Value Chain Profit Pool distribution"
+    },
+    {
+      "trigger": "M6_Tech_Peak_Hype",
+      "condition": "Technology approaching 'Peak of Inflated Expectations'",
+      "action": "Mark as 'High Risk' in M7; Suggest 'Enhance' but with validation"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+graph TD
+    A[战略命题]
+
+    M1[行业定义与规模测算]
+    M2[宏观环境 PESTEL]
+    M3[行业价值链]
+    M4[竞争分析与反应模式]
+    M5[波特五力模型]
+    M6[客户需求深度解剖]
+    M7[战略布局图 ERRC]
+    M8[商业画布]
+
+    T1_1[任务 测算存量与增量]
+    T2_1[任务 国家政策量化]
+    T3_1[任务 利润池测算]
+    T4_1[任务 竞争人格编码]
+    T5_1[任务 评估进入壁垒]
+    T6_1[任务 痛点/爽点挖掘]
+    T7_1[任务 ERRC方案生成]
+    T8_1[任务 九要素填充]
+
+    D1_1[数据 历年销量/保有量]
+    D2_1[数据 国家级政策文件]
+    D3_1[数据 各环节企业毛利率]
+    D4_1[数据 历史价格变动]
+    D5_1[数据 行业进入壁垒描述]
+    D6_1[数据 App Store 评论文本]
+    D7_1[数据 价值要素权重]
+    D8_1[数据 前7模块结论]
+
+    E1_1[证据 行业协会报告 🟢]
+    E2_1[证据 发改委官网 🟢]
+    E3_1[证据 企业财报 🟢]
+    E4_1[证据 竞品新闻稿 🟡]
+    E5_1[证据 行业专家访谈 🟡]
+    E6_1[证据 用户评论集 🟡]
+    E7_1[证据 M6输出 🟢]
+    E8_1[证据 M1-M7输出 🟢]
+
+    A -- decomposes_into --> M1
+    A -- decomposes_into --> M2
+    A -- decomposes_into --> M3
+    A -- decomposes_into --> M4
+    A -- decomposes_into --> M5
+    A -- decomposes_into --> M6
+    A -- decomposes_into --> M7
+    A -- decomposes_into --> M8
+
+    M1 -- requires_task --> T1_1
+    M2 -- requires_task --> T2_1
+    M3 -- requires_task --> T3_1
+    M4 -- requires_task --> T4_1
+    M5 -- requires_task --> T5_1
+    M6 -- requires_task --> T6_1
+    M7 -- requires_task --> T7_1
+    M8 -- requires_task --> T8_1
+
+    T1_1 -- needs_data --> D1_1
+    T2_1 -- needs_data --> D2_1
+    T3_1 -- needs_data --> D3_1
+    T4_1 -- needs_data --> D4_1
+    T5_1 -- needs_data --> D5_1
+    T6_1 -- needs_data --> D6_1
+    T7_1 -- needs_data --> D7_1
+    T8_1 -- needs_data --> D8_1
+
+    D1_1 -- sourced_from --> E1_1
+    D2_1 -- sourced_from --> E2_1
+    D3_1 -- sourced_from --> E3_1
+    D4_1 -- sourced_from --> E4_1
+    D5_1 -- sourced_from --> E5_1
+    D6_1 -- sourced_from --> E6_1
+    D7_1 -- sourced_from --> E7_1
+    D8_1 -- sourced_from --> E8_1
+
+    T6_1 -- informs --> M7
+    T4_1 -- informs --> M5
+    T3_1 -- depends_on --> T1_1
+    T2_1 -- informs --> M3
+    T6_1 -- informs --> M8
+    T7_1 -- informs --> M8
